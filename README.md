@@ -1,23 +1,7 @@
 # 第三方 BLE 素材高速传输设备端改造说明 V1.0
 
-文档状态：开发联调版  
-更新日期：2026-07-30  
-适用设备：第三方纯 BLE 480×480 屏幕设备  
-配套协议：`宝妈屏幕 BLE 素材传输协议 V1.0`
-
 ## 1. 改造范围
-
-本次只升级第三方 BLE 的链路发送方式，不修改现有媒体传输帧格式，也不涉及 App 自有 V5 协议。
-
-保持不变：
-
-- Service、RX、TX UUID 不变。
-- 帧头、命令 Type、Sequence、CRC16、SHA-256 不变。
-- 协议 Version 仍为 `0x01`。
-- START、DATA、DATA_ACK_REQUEST、END 和 CANCEL 流程不变。
-- 仍以设备返回的 START_ACK、累计 DATA_ACK、END_ACK 作为业务成功依据。
-
-本次设备端需要增加：
+设备端需要增加：
 
 - RX Characteristic 支持 `Write Without Response`。
 - 能连续接收一个 DATA 窗口，不要求每包 ATT Write Response。
